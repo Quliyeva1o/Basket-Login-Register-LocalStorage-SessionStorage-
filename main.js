@@ -177,9 +177,9 @@ function decrease(e) {
 
     if (foundDuplicate) {
         if (foundDuplicate.count == 1) {
-            decreaseButton.disabled = true;
             decreaseButton.classList.remove('btn-outline-warning');
             decreaseButton.classList.add('btn-outline-danger');
+            console.log(decreaseButton );
         } else {
             foundDuplicate.count--;
             Swal.fire({
@@ -189,11 +189,12 @@ function decrease(e) {
                 showConfirmButton: false,
                 timer: 1500
             });
+            
+    localStorage.setItem('basket', JSON.stringify(localBasketArr));
+    renderBasketTableHTML(localBasketArr, products);
         }
     }
 
-    localStorage.setItem('basket', JSON.stringify(localBasketArr));
-    renderBasketTableHTML(localBasketArr, products);
 }
 
 function deleteItem(e) {
